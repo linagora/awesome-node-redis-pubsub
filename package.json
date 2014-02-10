@@ -1,19 +1,19 @@
-{ "name": "node-redis-pubsub"
+{ "name": "awesome-node-redis-pubsub"
 , "version": "0.2.1"
 , "author": { "name": "Louis Chatriot"
             , "email": "louis.chatriot@gmail.com"
             }
-, "contributors": [ "Louis Chatriot", "omarmohamed", "Martin Saint-Macary" ]
+, "contributors": [ "Louis Chatriot", "omarmohamed", "Martin Saint-Macary", "Linagora Folks" ]
 , "description": "Redis PubSub client for Node"
 , "keywords": ["redis", "pubsub", "node", "simple"]
 , "homepage": "https://github.com/louischatriot/node-redis-pubsub"
 , "dependencies": { "redis": "0.8.x"
                   }
 , "devDependencies": { "mocha": "*"
-                     , "should": "*"
+                     , "chai": "*"
                      }
 , "repository": { "type": "git"
-                , "url": "git://github.com/louischatriot/node-redis-pubsub"
+                , "url": "http://ci-openpaas.linagora.com/stash/scm/or/awesome-node-redis-pubsub.git"
                 }
 , "engines": {
     "node": "*"
