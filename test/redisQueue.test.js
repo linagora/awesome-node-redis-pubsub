@@ -21,19 +21,6 @@ describe('Node Redis Pubsub', function () {
       });
   });
 
-  it('Should receive pattern messages correctly', function (done) {
-    var rq = new NodeRedisPubsub(conf);
-
-    rq.on('test:*', function (data) {
-      data.first.should.equal('First message');
-      data.second.should.equal('Second message');
-      done();
-    }
-    , function () {
-        rq.emit('test:created', { first: 'First message'
-                            , second: 'Second message' });
-      });
-  });
 
   it('Should only receive messages for his own scope', function (done) {
     var rq = new NodeRedisPubsub(conf)
@@ -55,6 +42,24 @@ describe('Node Redis Pubsub', function () {
         });
       });
   });
+
+  it('Should support unsubscribing channels', function (done) {
+    var rq = new NodeRedisPubsub(conf);
+    var handler = function (data) {
+      data.first.should.equal('First message');
+      data.second.should.equal('Second message');
+    };
+    rq.on('remove test', handler
+    , function () {
+      rq.removeListener('remove test', handler,function() {
+        rq._channels['onescope:remove test'].subscriptions.should.have.length(0);
+        rq._channels['onescope:remove test'].subscribed.should.be.false;
+        done();
+      });
+    });
+  });
+
+
 
 });
 
