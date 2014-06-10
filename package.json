@@ -1,5 +1,5 @@
 { "name": "awesome-node-redis-pubsub"
-, "version": "0.2.1"
+, "version": "0.2.2"
 , "author": { "name": "Louis Chatriot"
             , "email": "louis.chatriot@gmail.com"
             }
