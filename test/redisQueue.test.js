@@ -7,6 +7,23 @@ var should = require('chai').should()
 
 describe('Node Redis Pubsub', function () {
 
+  it('should trap driver error using onRedisError option', function(done) {
+    var called = 0;
+    var conf = {
+      port: 3333,
+      scope: 'foo',
+      onRedisError: function(err) {
+        err.should.be.an.object;
+        err.should.have.property('message');
+        called++;
+        if ( called === 2 ) {
+          done();
+        }
+      }
+    };
+    var rq = new NodeRedisPubsub(conf);
+  });
+
   it('Should send and receive standard messages correctly', function (done) {
     var rq = new NodeRedisPubsub(conf);
 
